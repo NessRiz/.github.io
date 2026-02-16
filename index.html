@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aurien Group - Operational clarity for organisations navigating growth. Working with growing businesses to build operational clarity during periods of scale.">
+    <title>Aurien Group | Operational Clarity for Organisations Navigating Growth</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts - Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --amber: #FFB300;
+            --dark: #1a1a1a;
+            --grey: #4a5568;
+            --light-grey: #fafafa;
+        }
+
+        * {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        body {
+            color: var(--grey);
+            line-height: 1.8;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background: white;
+        }
+
+        input, textarea, button, select {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        .navbar {
+            padding: 2rem 0;
+            background: white;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .navbar-brand {
+            margin-right: auto;
+        }
+
+        .navbar-brand img {
+            height: 45px;
+            width: auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0 80px;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 3.75rem;
+            font-weight: 300;
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
+            display: block;
+            margin-top: 0.25rem;
+            color: var(--amber);
+        }
+
+        .hero-lead {
+            font-size: 1.5rem;
+            line-height: 1.7;
+            color: var(--dark);
+            font-weight: 400;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+            padding-left: 1rem;
+            border-left: 3px solid var(--amber);
+        }
+
+        section p {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--grey);
+            margin-bottom: 1.5rem;
+            max-width: 750px;
+        }
+
+        /* Custom bullets - minimal */
+        .custom-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            max-width: 800px;
+        }
+
+        .custom-list li {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--grey);
+            margin-bottom: 1.75rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .custom-list li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--amber);
+            font-weight: 500;
+            font-size: 1.25rem;
+            transition: color 0.2s ease;
+        }
+
+        .custom-list li:hover:before {
+            color: #e6a200;
+        }
+
+        /* Emphasis */
+        strong, b {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* Strategic amber emphasis for key phrases */
+        .amber-emphasis {
+            color: var(--amber);
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+            color: var(--dark);
+        }
+
+        /* Contact Form Section */
+        .contact-section {
+            background: var(--light-grey);
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 2rem;
+        }
+
+        .contact-section p {
+            max-width: 700px;
+            color: var(--grey);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Form Styling */
+        .contact-form {
+            max-width: 700px;
+            margin: 3rem 0 0;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #d1d5db;
+            padding: 0.875rem 1rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            background: white;
+            color: var(--dark);
+            transition: border-color 0.2s ease;
+        }
+
+        .form-control::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--amber);
+            box-shadow: 0 0 0 3px rgba(255, 179, 0, 0.1);
+            outline: none;
+            background: white;
+        }
+
+        textarea.form-control {
+            min-height: 140px;
+        }
+
+        /* Button - minimal, confident */
+        .btn-primary {
+            background: var(--amber);
+            border: none;
+            color: var(--dark);
+            font-weight: 600;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            background: #e6a200;
+            color: var(--dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0;
+            border-top: 1px solid #f0f0f0;
+            background: white;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--grey);
+            font-size: 0.95rem;
+        }
+
+        .footer-links a {
+            color: var(--grey);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--dark);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-lead {
+                font-size: 1.25rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 60px 0 50px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .footer-links a {
+                margin-left: 0;
+            }
+        }
+
+        /* Subtle fade-in on load */
+        body {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#top">
+                <img src="logo.png" alt="Aurien Group">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 col-xl-10">
+                    <h1>
+                        <strong style="font-weight: 600; color: var(--dark);">Operational clarity for organisations</strong>
+                        <strong>navigating growth</strong>
+                    </h1>
+                    
+                    <p class="hero-lead">Revenue grows, but margins compress. Hiring accelerates, but productivity per head declines. What worked brilliantly to get you here won't get you where you're going next.</p>
+                    
+                    <p class="hero-lead"><strong>At 50 people, your foundations were built for survival and early traction. At 150, you need foundations built for scale.</strong> And the operational model that got you here isn't designed for what comes next.</p>
+                    
+                    <p class="hero-lead">Aurien Group works with growing organisations during this transition, bringing experienced operational perspective when the decisions you make now will define your capacity to scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- You're in the right place -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 col-xl-10">
+                    <h2>You're in the right place if:</h2>
+                    <ul class="custom-list">
+                        <li>Your business has grown faster than your operating model</li>
+                        <li>Leadership meetings feel reactive rather than strategic</li>
+                        <li>You're preparing for partner or channel models and need to think through operational implications before committing</li>
+                        <li>You're spending more time <em>in</em> the business than <em>on</em> it, and know this needs to reverse</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How this works -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 col-xl-10">
+                    <h2>How this works</h2>
+                    
+                    <p>Most consultants arrive with frameworks. <span class="amber-emphasis">We arrive with questions.</span></p>
+                    
+                    <p>The work begins by understanding how your organisation actually operates today. What's working, what's stretched, what needs to evolve. Then we build clarity around operating model, decision-making, pressure points, and the rhythms that will support your next stage without creating bureaucracy.</p>
+                    
+                    <p><span class="amber-emphasis">This isn't strategy consulting.</span> It's operational pattern recognition from years inside growing businesses. Building the systems, living the trade-offs, and working through the complexity that comes with scale.</p>
+                    
+                    <p><strong>The format:</strong> Regular working sessions where we map tensions, test assumptions, and build operational clarity. <span class="amber-emphasis">Not a permanent COO. Not a one-off deck.</span> Operational thinking when it matters most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-11 col-xl-10">
+                    <h2>Start with a conversation</h2>
+                    
+                    <p>30 minutes to understand where growth is creating pressure and whether an operational perspective would be useful.</p>
+                    
+                    <p>No pitch. No frameworks. Just a straightforward conversation about your business.</p>
+
+                    <!-- Contact Form -->
+                    <form action="https://formspree.io/f/mvzbajzv" method="POST" class="contact-form">
+                        <div class="mb-4">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="company" class="form-label">Company</label>
+                            <input type="text" class="form-control" id="company" name="company">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Tell us about your business</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="What's creating pressure as you grow?" required></textarea>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="btn btn-primary">Send message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>&copy; 2026 Aurien Group</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
