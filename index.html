@@ -9,6 +9,9 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
     <!-- Google Fonts - Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,7 +149,64 @@
             color: #e6a200;
         }
 
-        /* Emphasis */
+        /* Icon grid for "You're in the right place" section */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .icon-card {
+            text-align: left;
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 0 1.5rem 0;
+            background: var(--light-grey);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-wrapper svg {
+            stroke: var(--amber);
+        }
+
+        .icon-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--grey);
+            margin: 0;
+            max-width: none;
+        }
+
+        /* Responsive grid */
+        @media (max-width: 1200px) {
+            .icon-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .icon-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .icon-wrapper {
+                width: 70px;
+                height: 70px;
+            }
+
+            .icon-wrapper i {
+                font-size: 2rem;
+            }
+        }
         strong, b {
             color: var(--dark);
             font-weight: 600;
@@ -341,7 +401,7 @@
                     
                     <p class="hero-lead"><strong>At 50 people, your foundations were built for survival and early traction. At 150, you need foundations built for scale.</strong> And the operational model that got you here isn't designed for what comes next.</p>
                     
-                    <p class="hero-lead">Aurien Group works with growing organisations during this transition, bringing experienced operational perspective when the decisions you make now will define your capacity to scale.</p>
+                    <p class="hero-lead"><span class="amber-emphasis">Aurien Group</span> works with growing organisations during this transition, bringing experienced operational perspective when the decisions you make now will define your capacity to scale.</p>
                 </div>
             </div>
         </div>
@@ -353,12 +413,51 @@
             <div class="row">
                 <div class="col-lg-11 col-xl-10">
                     <h2>You're in the right place if:</h2>
-                    <ul class="custom-list">
-                        <li>Your business has grown faster than your operating model</li>
-                        <li>Leadership meetings feel reactive rather than strategic</li>
-                        <li>You're preparing for partner or channel models and need to think through operational implications before committing</li>
-                        <li>You're spending more time <em>in</em> the business than <em>on</em> it, and know this needs to reverse</li>
-                    </ul>
+                    
+                    <div class="icon-grid">
+                        <div class="icon-card">
+                            <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                                    <polyline points="16 7 22 7 22 13"></polyline>
+                                </svg>
+                            </div>
+                            <p>Your business has grown faster than your operating model</p>
+                        </div>
+
+                        <div class="icon-card">
+                            <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    <path d="M8 10h.01M12 10h.01M16 10h.01"></path>
+                                </svg>
+                            </div>
+                            <p>Leadership meetings feel reactive rather than strategic</p>
+                        </div>
+
+                        <div class="icon-card">
+                            <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <p>You're preparing for partner or channel models and need to think through operational implications before committing</p>
+                        </div>
+
+                        <div class="icon-card">
+                            <div class="icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <polyline points="23 4 23 10 17 10"></polyline>
+                                    <polyline points="1 20 1 14 7 14"></polyline>
+                                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                                </svg>
+                            </div>
+                            <p>You're spending more time <em>in</em> the business than <em>on</em> it, and know this needs to reverse</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -373,11 +472,11 @@
                     
                     <p>Most consultants arrive with frameworks. <span class="amber-emphasis">We arrive with questions.</span></p>
                     
-                    <p>The work begins by understanding how your organisation actually operates today. What's working, what's stretched, what needs to evolve. Then we build clarity around operating model, decision-making, pressure points, and the rhythms that will support your next stage without creating bureaucracy.</p>
+                    <p>The work begins by understanding how your organisation operates today. What's working, what's stretched, what needs to evolve. Then we build clarity around operating model, decision-making, pressure points, and the rhythms that will support your next stage without creating bureaucracy.</p>
                     
                     <p><span class="amber-emphasis">This isn't strategy consulting.</span> It's operational pattern recognition from years inside growing businesses. Building the systems, living the trade-offs, and working through the complexity that comes with scale.</p>
                     
-                    <p><strong>The format:</strong> Regular working sessions where we map tensions, test assumptions, and build operational clarity. <span class="amber-emphasis">Not a permanent COO. Not a one-off deck.</span> Operational thinking when it matters most.</p>
+                    <p><span class="amber-emphasis">Not a permanent COO. Not a one-off deck.</span> Over a decade of operational experience, locally and globally, applied to the decisions that matter most right now. Regular working sessions where we map tensions, test assumptions, and build operational clarity.</p>
                 </div>
             </div>
         </div>
@@ -390,7 +489,7 @@
                 <div class="col-lg-11 col-xl-10">
                     <h2>Start with a conversation</h2>
                     
-                    <p>30 minutes to understand where growth is creating pressure and whether an operational perspective would be useful.</p>
+                    <p><strong>30 minutes</strong> to understand where growth is creating pressure and whether an operational perspective would be useful.</p>
                     
                     <p>No pitch. No frameworks. Just a straightforward conversation about your business.</p>
 
