@@ -494,7 +494,7 @@
                     <p>No pitch. No frameworks. Just a straightforward conversation about your business.</p>
 
                     <!-- Contact Form -->
-                    <form action="https://formspree.io/f/mvzbajzv" method="POST" class="contact-form">
+                    <form id="contact-form" class="contact-form" novalidate>
                         <div class="mb-4">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -516,9 +516,59 @@
                         </div>
                         
                         <div>
-                            <button type="submit" class="btn btn-primary">Send message</button>
+                            <button type="submit" class="btn btn-primary" id="submit-btn">Send message</button>
+                        </div>
+
+                        <div id="form-success" style="display:none; margin-top: 1.5rem; color: #1a1a1a; font-size: 1rem; font-weight: 500;">
+                            Thanks — I'll be in touch within one business day.
+                        </div>
+                        <div id="form-error" style="display:none; margin-top: 1.5rem; color: #c0392b; font-size: 1rem;">
+                            Something went wrong. Please try again or email us directly at <a href="mailto:info@auriengroup.com">info@auriengroup.com</a>.
                         </div>
                     </form>
+
+                    <script>
+                        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+                            e.preventDefault();
+
+                            const btn = document.getElementById('submit-btn');
+                            const success = document.getElementById('form-success');
+                            const error = document.getElementById('form-error');
+
+                            btn.disabled = true;
+                            btn.textContent = 'Sending...';
+                            success.style.display = 'none';
+                            error.style.display = 'none';
+
+                            const payload = {
+                                name: document.getElementById('name').value,
+                                email: document.getElementById('email').value,
+                                company: document.getElementById('company').value,
+                                message: document.getElementById('message').value,
+                                submitted_at: new Date().toISOString()
+                            };
+
+                            try {
+                                const res = await fetch('https://hook.us2.make.com/axvah1wqtcxnfyh8wvffibdfypudjgab', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(payload)
+                                });
+
+                                if (res.ok) {
+                                    document.getElementById('contact-form').querySelectorAll('input, textarea').forEach(el => el.value = '');
+                                    success.style.display = 'block';
+                                    btn.textContent = 'Sent';
+                                } else {
+                                    throw new Error('Server error');
+                                }
+                            } catch(err) {
+                                error.style.display = 'block';
+                                btn.disabled = false;
+                                btn.textContent = 'Send message';
+                            }
+                        });
+                    </script>
                 </div>
             </div>
         </div>
