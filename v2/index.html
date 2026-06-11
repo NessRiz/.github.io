@@ -393,8 +393,10 @@
       .founder .photo { width:288px; margin:0 auto; }
       .wrap { padding:0 24px; }
       .mast .row { padding:14px 24px; gap:16px; }
-      .article .bignum { font-size:130px; }
-      .ai .bignum { font-size:130px; right:24px; }
+      .article .bignum, .ai .bignum {
+        position:static; font-size:84px; text-align:right;
+        padding:0 24px; margin-bottom:4px;
+      }
     }
     @media(max-width:600px){
       .hero { padding:56px 0 44px; }
