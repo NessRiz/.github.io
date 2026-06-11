@@ -1,0 +1,776 @@
+﻿<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurien Group â€” Preview Mockup v2</title>
+  <meta name="description" content="Operations built for the next stage of growth. Aurien Group works with tech companies and growth-stage businesses across Australia and the US.">
+  <style>
+    @font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Light.ttf") format("truetype"); font-weight:300; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Regular.ttf") format("truetype"); font-weight:400; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Medium.ttf") format("truetype"); font-weight:500; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-SemiBold.ttf") format("truetype"); font-weight:600; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Bold.ttf") format("truetype"); font-weight:700; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-ExtraBold.ttf") format("truetype"); font-weight:800; font-display:swap; }
+    @font-face { font-family:"Montserrat"; src:url("fonts/Montserrat-Black.ttf") format("truetype"); font-weight:900; font-display:swap; }
+    @font-face { font-family:"Inter"; src:url("fonts/Inter-Light.ttf") format("truetype"); font-weight:300; font-display:swap; }
+    @font-face { font-family:"Inter"; src:url("fonts/Inter-Regular.ttf") format("truetype"); font-weight:400; font-display:swap; }
+    @font-face { font-family:"Inter"; src:url("fonts/Inter-Medium.ttf") format("truetype"); font-weight:500; font-display:swap; }
+    @font-face { font-family:"Inter"; src:url("fonts/Inter-SemiBold.ttf") format("truetype"); font-weight:600; font-display:swap; }
+    @font-face { font-family:"Inter"; src:url("fonts/Inter-Bold.ttf") format("truetype"); font-weight:700; font-display:swap; }
+
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
+    body {
+      background:#FAF8F4; color:#14130F;
+      font-family:"Inter","Helvetica Neue",Arial,sans-serif;
+      font-size:16px; line-height:1.55;
+      -webkit-font-smoothing:antialiased;
+    }
+    ::selection { background:#FFE4A6; color:#14130F; }
+    img { display:block; max-width:100%; }
+
+    :root {
+      --paper:#FAF8F4; --paper2:#F2EFE8; --ink:#14130F; --grey:#5B5851;
+      --grey2:#3F3D38; --mute:#8A8780; --line:#E7E3D9; --gold:#FFB300; --golddeep:#E59E00;
+    }
+
+    /* Preview banner */
+    .preview-banner {
+      background:var(--gold); color:#000;
+      font-family:"Montserrat",sans-serif; font-weight:700; font-size:12px;
+      letter-spacing:.1em; text-transform:uppercase;
+      text-align:center; padding:9px 16px;
+    }
+
+    /* Scroll progress */
+    .progress {
+      position:fixed; top:0; left:0; height:2px;
+      background:var(--gold); z-index:60; width:0;
+      transition:width .08s linear; pointer-events:none;
+    }
+
+    /* Masthead */
+    .mast {
+      position:sticky; top:0; z-index:50;
+      background:rgba(250,248,244,.97);
+      border-bottom:1px solid var(--ink);
+    }
+    .mast .row {
+      display:flex; align-items:center; gap:32px;
+      padding:16px 48px; max-width:1240px; margin:0 auto;
+    }
+    .mast .brand {
+      display:flex; align-items:center; gap:11px;
+      text-decoration:none; color:var(--ink); flex:none;
+    }
+    .mast .brand img { height:34px; width:auto; max-width:none; }
+    .mast nav { display:flex; align-items:center; gap:26px; margin-left:auto; }
+    .mast nav a {
+      position:relative; font-family:"Montserrat",sans-serif;
+      font-weight:600; font-size:13px; letter-spacing:.01em;
+      text-decoration:none; color:var(--grey); padding:6px 0; transition:color .18s;
+    }
+    .mast nav a::after {
+      content:""; position:absolute; left:0; right:100%; bottom:-1px;
+      height:2px; background:var(--gold);
+      transition:right .22s cubic-bezier(.16,1,.3,1);
+    }
+    .mast nav a:hover,
+    .mast nav a.on { color:var(--ink); }
+    .mast nav a:hover::after,
+    .mast nav a.on::after { right:0; }
+    .mast .cta {
+      font-family:"Montserrat",sans-serif; font-weight:700;
+      font-size:12.5px; letter-spacing:.04em;
+      text-decoration:none; color:var(--ink);
+      border:1px solid var(--ink); padding:10px 16px;
+      transition:all .18s; flex:none; border-radius:6px;
+    }
+    .mast .cta:hover { background:var(--ink); color:#fff; }
+    .mast .menu-btn {
+      display:none; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+      width:40px; height:38px; flex:none; background:none;
+      border:1px solid var(--ink); border-radius:6px; cursor:pointer;
+    }
+    .mast .menu-btn span { display:block; width:18px; height:2px; background:var(--ink); }
+    .mast .m-nav { display:none; background:var(--paper); border-top:1px solid var(--line); margin-left:0; }
+    .mast .m-nav.open { display:block; }
+    .mast .m-nav a {
+      display:flex; align-items:baseline; gap:14px;
+      padding:14px 24px; text-decoration:none; color:var(--ink);
+      border-bottom:1px solid var(--line);
+      font-family:"Montserrat",sans-serif; font-weight:600; font-size:15px;
+    }
+    .mast .m-nav a::after { content:none; }
+    .mast .m-nav a:last-child { border-bottom:0; }
+    @media(max-width:1080px){
+      .mast nav { display:none; }
+      .mast .cta { margin-left:auto; }
+      .mast .menu-btn { display:flex; }
+    }
+
+    /* Layout */
+    .wrap { max-width:1240px; margin:0 auto; padding:0 48px; }
+
+    /* Reveal */
+    [data-reveal] {
+      opacity:0; transform:translateY(18px);
+      transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);
+    }
+    [data-reveal][data-in] { opacity:1; transform:none; }
+    section[id] { scroll-margin-top:74px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      [data-reveal] { transition:none; opacity:1; transform:none; }
+    }
+
+    /* Eyebrows */
+    .sec-kick {
+      font-family:"Montserrat",sans-serif; font-weight:700; font-size:12px;
+      letter-spacing:.22em; text-transform:uppercase; color:var(--grey);
+      margin-bottom:22px; display:flex; align-items:center; gap:12px;
+    }
+    .sec-kick .sq { width:9px; height:9px; background:var(--gold); flex-shrink:0; }
+
+    /* Buttons */
+    .btn {
+      display:inline-flex; align-items:center; gap:8px;
+      font-family:"Montserrat",sans-serif; font-weight:700; font-size:13.5px;
+      letter-spacing:.02em; padding:13px 22px; border:1px solid transparent;
+      cursor:pointer; text-decoration:none; transition:all .18s; border-radius:6px;
+    }
+    .btn .arr { transition:transform .18s; }
+    .btn:hover .arr { transform:translateX(3px); }
+    .btn-p { background:var(--gold); color:#000; border-color:var(--gold); }
+    .btn-p:hover { background:var(--golddeep); border-color:var(--golddeep); }
+    .btn-g { background:transparent; color:var(--ink); border-color:var(--ink); }
+    .btn-g:hover { background:var(--ink); color:#fff; }
+
+    /* Hero â€” broadsheet front page */
+    .hero { border-bottom:1px solid var(--line); padding:84px 0 72px; }
+    .hero .grid { display:grid; grid-template-columns:1.55fr .9fr; gap:72px; align-items:end; }
+    h1.hero-h {
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:clamp(44px,5.8vw,80px); line-height:.96;
+      letter-spacing:-.035em; margin:0;
+    }
+    h1.hero-h em { font-style:normal; color:var(--gold); }
+    .hero .lead {
+      font-size:20px; line-height:1.55; color:var(--grey2);
+      margin:28px 0 0; max-width:640px;
+    }
+    .hero .lead + .lead { margin-top:16px; }
+    .hero .emph {
+      font-size:20px; line-height:1.5; font-weight:600; color:var(--ink);
+      margin:18px 0 0; max-width:640px;
+    }
+    .hero .ctas { display:flex; gap:12px; margin-top:34px; flex-wrap:wrap; }
+
+    /* Contents index */
+    .contents { border-left:1px solid var(--ink); padding-left:26px; }
+    .contents .lbl {
+      font-family:"Montserrat",sans-serif; font-weight:700; font-size:11px;
+      letter-spacing:.2em; text-transform:uppercase; color:var(--mute); margin-bottom:14px;
+    }
+    .contents a {
+      display:flex; align-items:baseline; gap:14px; text-decoration:none;
+      color:var(--ink); padding:13px 0; border-bottom:1px solid var(--line); transition:color .18s;
+    }
+    .contents a .tt {
+      font-family:"Montserrat",sans-serif; font-weight:600;
+      font-size:16px; letter-spacing:-.01em;
+    }
+    .contents a:hover { color:var(--golddeep); }
+    .contents a:hover .tt { text-decoration:underline; text-underline-offset:3px; }
+    .contents .meta {
+      font-family:"Montserrat",sans-serif; font-weight:600; font-size:11.5px;
+      letter-spacing:.08em; color:var(--mute); padding-top:16px;
+    }
+
+    /* Article block */
+    .article { position:relative; padding:78px 0; border-bottom:1px solid var(--line); }
+    .article .bignum {
+      position:absolute; top:40px; right:48px;
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:150px; line-height:1; color:transparent;
+      -webkit-text-stroke:2px rgba(229,158,0,.55);
+      letter-spacing:-.05em; z-index:0; pointer-events:none; user-select:none;
+    }
+    @supports not (-webkit-text-stroke:2px black) {
+      .article .bignum { color:#FFE4A6; }
+    }
+    .article .inner { position:relative; z-index:1; }
+
+    /* Who we work with */
+    .why-grid { display:grid; grid-template-columns:1fr 1.45fr; gap:64px; align-items:start; }
+    .why-grid .why-list { margin-right:150px; }
+    .why-grid h2 {
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:clamp(34px,4vw,52px); line-height:1.02; letter-spacing:-.025em; margin:0;
+    }
+    .why-grid .aside {
+      margin-top:28px; font-size:16px; line-height:1.6; color:var(--grey);
+      max-width:360px;
+    }
+    .why-list { list-style:none; }
+    .why-list li {
+      display:grid; grid-template-columns:40px 1fr; gap:16px;
+      padding:26px 0; border-top:1px solid var(--line);
+      font-size:19px; line-height:1.5; align-items:start;
+    }
+    .why-list li:first-child { border-top:0; padding-top:0; }
+    .why-list .ix {
+      font-family:"Montserrat",sans-serif; font-weight:800;
+      font-size:14px; color:var(--gold); padding-top:5px;
+    }
+    .why-list strong { font-weight:600; color:var(--ink); }
+    .why-list span:last-child { color:var(--grey2); }
+
+    /* Approach */
+    .approach h2 {
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:clamp(38px,5vw,68px); line-height:1.0;
+      letter-spacing:-.03em; margin:0 0 40px; max-width:980px;
+    }
+    .approach h2 em { font-style:normal; color:var(--gold); }
+    .approach .cols { display:grid; grid-template-columns:1.2fr 1fr; gap:64px; align-items:start; }
+    .approach .body p { font-size:20px; line-height:1.6; color:var(--grey2); margin:0 0 20px; }
+    .approach .body p:last-child { margin-bottom:0; }
+    .approach .pull { border-top:2px solid var(--ink); padding-top:24px; }
+    .approach .pull p {
+      font-family:"Montserrat",sans-serif; font-weight:800;
+      font-size:27px; line-height:1.2; letter-spacing:-.01em; margin:0;
+    }
+
+    /* AI â€” inverted band */
+    .ai { position:relative; background:var(--ink); color:#fff; padding:96px 0; overflow:hidden; }
+    .ai .bignum {
+      position:absolute; top:40px; right:48px;
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:156px; line-height:1; color:transparent;
+      -webkit-text-stroke:2px rgba(229,158,0,.8);
+      letter-spacing:-.05em; z-index:0; pointer-events:none; user-select:none;
+    }
+    @supports not (-webkit-text-stroke:2px black) {
+      .ai .bignum { color:rgba(229,158,0,.25); }
+    }
+    .ai .sunmark {
+      position:absolute; right:48px; bottom:48px; width:380px;
+      opacity:.14; z-index:0; pointer-events:none; user-select:none;
+    }
+    @media(max-width:920px){ .ai .sunmark { width:220px; right:24px; bottom:24px; opacity:.1; } }
+    .ai .wrap { position:relative; z-index:1; }
+    .ai .sec-kick { color:var(--gold); }
+    .ai h2 {
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:clamp(36px,4.6vw,62px); line-height:1.02;
+      letter-spacing:-.03em; margin:0 0 48px; max-width:920px;
+    }
+    .ai h2 em { font-style:normal; color:var(--gold); }
+    .ai .emph {
+      font-family:"Montserrat",sans-serif; font-weight:800;
+      font-size:26px; line-height:1.25; color:#fff;
+      border-top:1px solid rgba(255,255,255,.16); padding-top:40px;
+      margin:0 0 36px; max-width:880px;
+    }
+    .ai .q { font-size:20px; line-height:1.55; color:#C9C6BE; margin:0; max-width:820px; }
+    .ai .q p { margin:0 0 18px; }
+    .ai .q ul { list-style:none; margin:0 0 18px; padding:0; }
+    .ai .q li { position:relative; padding-left:26px; margin-bottom:6px; }
+    .ai .q li::before { content:""; position:absolute; left:0; top:.5em; width:9px; height:9px; background:var(--gold); }
+    .ai .q .punch { color:#fff; margin:0; }
+    .ai .close { font-size:19px; line-height:1.6; color:#C9C6BE; margin:36px 0 0; max-width:820px; }
+
+    /* Stages */
+    .stages h2 {
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:clamp(30px,3.4vw,46px); line-height:1.05;
+      letter-spacing:-.025em; margin:0 0 48px;
+    }
+    .stages .cols-row { display:grid; grid-template-columns:repeat(3,1fr); align-items:start; }
+    .stages .col { padding:30px 30px 30px 0; }
+    .stages .col + .col { padding-left:30px; border-left:1px solid var(--line); }
+    .stages h3 {
+      font-family:"Montserrat",sans-serif; font-weight:800;
+      font-size:30px; margin:0 0 4px; letter-spacing:-.01em; color:var(--gold);
+    }
+    .stages .when {
+      font-family:"Montserrat",sans-serif; font-weight:700; font-size:11px;
+      letter-spacing:.16em; text-transform:uppercase; color:var(--grey); margin-bottom:16px;
+    }
+    .stages .col p { font-size:16px; line-height:1.55; color:var(--grey2); margin:0; }
+    .stages .channel {
+      margin-top:40px;
+      font-size:18px; line-height:1.6; color:var(--grey2); max-width:820px;
+    }
+
+    /* Founder */
+    .founder { background:var(--paper2); }
+    .founder .grid { display:grid; grid-template-columns:420px 1fr; gap:72px; align-items:start; }
+    .founder .photo { width:420px; }
+    .founder .photo img { width:100%; display:block; }
+    .founder .name {
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:clamp(40px,4.4vw,60px); line-height:1; letter-spacing:-.03em; margin:0 0 22px;
+    }
+    .founder .emph {
+      font-family:"Montserrat",sans-serif; font-weight:700;
+      font-size:24px; line-height:1.3; letter-spacing:-.01em; margin:0 0 24px; max-width:620px;
+    }
+    .founder .copy { font-size:18px; line-height:1.6; color:var(--grey2); margin:0 0 26px; max-width:600px; }
+    .founder .copy p { margin:0 0 16px; }
+    .founder .copy p:last-child { margin:0; }
+    .founder .creds { display:flex; flex-wrap:wrap; gap:8px; }
+    .founder .creds span {
+      font-family:"Montserrat",sans-serif; font-weight:600; font-size:12px;
+      letter-spacing:.02em; color:var(--ink);
+      border:1px solid var(--line); background:#fff; padding:7px 12px; border-radius:6px;
+    }
+
+    /* Contact */
+    .contact .grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; }
+    .contact .big {
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:clamp(64px,8vw,104px); line-height:.9;
+      letter-spacing:-.04em; color:var(--gold); margin:0 0 12px;
+    }
+    .contact h2 {
+      font-family:"Montserrat",sans-serif; font-weight:900;
+      font-size:clamp(30px,3.6vw,48px); line-height:1;
+      letter-spacing:-.03em; margin:0 0 22px;
+    }
+    .contact .copy { font-size:18px; line-height:1.55; color:var(--grey2); max-width:460px; margin:0 0 18px; }
+    .contact .copy p { margin:0 0 16px; }
+    .contact .copy p:last-child { margin:0; }
+    .contact .mail { font-size:14px; color:var(--grey); margin-top:18px; }
+    .contact .mail a { color:var(--ink); }
+    form { display:grid; gap:15px; }
+    .field { display:flex; flex-direction:column; gap:6px; }
+    .field label {
+      font-family:"Montserrat",sans-serif; font-weight:600; font-size:12.5px;
+    }
+    .field input, .field textarea {
+      font-family:"Inter",sans-serif; font-size:15px; padding:12px 14px;
+      border:1px solid var(--mute); background:#fff; color:var(--ink);
+      outline:none; transition:border-color .16s; border-radius:6px;
+    }
+    .field input:focus, .field textarea:focus {
+      border-color:var(--gold); box-shadow:0 0 0 3px rgba(255,179,0,.4);
+    }
+    .field textarea { min-height:104px; resize:vertical; }
+    .field .err { font-size:12px; color:#B23A2F; display:none; margin-top:2px; }
+    .field .err.show { display:block; }
+    .form-success {
+      padding:26px; background:#FFF6E0; border:1px solid #FFE4A6;
+      font-size:16px; border-radius:10px; display:none;
+    }
+    .form-success.show { display:block; }
+    .form-error { font-size:14px; color:#B23A2F; display:none; margin-top:8px; }
+    .form-error.show { display:block; }
+
+    /* Footer */
+    .foot { background:var(--ink); color:#8A8780; padding:44px 0 56px; }
+    .foot .row {
+      display:flex; justify-content:space-between; align-items:center;
+      gap:24px; flex-wrap:wrap;
+    }
+    .foot .brand { display:flex; align-items:center; gap:11px; }
+    .foot .brand img { height:30px; width:auto; max-width:none; }
+    .foot a { color:#C9C6BE; text-decoration:none; }
+    .foot a:hover { color:#fff; }
+    .foot .links { display:flex; gap:22px; }
+    .foot .legal { margin-top:22px; font-size:12px; color:#5B5851; }
+
+    /* Responsive */
+    @media(max-width:920px){
+      .hero .grid, .why-grid, .approach .cols,
+      .founder .grid, .contact .grid { grid-template-columns:1fr; gap:36px; }
+      .why-grid .why-list { margin-right:0; }
+      .contents { display:none; }
+      .stages .cols-row { grid-template-columns:1fr; }
+      .stages .col + .col { padding-left:0; border-left:0; border-top:1px solid var(--line); padding-top:24px; }
+      .founder .photo { width:288px; margin:0 auto; }
+      .wrap { padding:0 24px; }
+      .mast .row { padding:14px 24px; gap:16px; }
+      .article .bignum { font-size:130px; }
+      .ai .bignum { font-size:130px; right:24px; }
+    }
+    @media(max-width:600px){
+      .hero { padding:56px 0 44px; }
+      .article { padding:56px 0; }
+      .ai { padding:64px 0; }
+      .mast .brand img { height:26px; }
+      .mast .cta { display:none; }
+      .mast .menu-btn { margin-left:auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-banner">Preview mockup v2 &middot; awaiting approval before build</div>
+
+  <div class="progress" id="js-progress"></div>
+
+  <!-- Masthead -->
+  <header class="mast">
+    <div class="row">
+      <a class="brand" href="#top">
+        <img src="assets/logo.png" alt="Aurien Group">
+      </a>
+      <nav aria-label="Sections">
+        <a href="#who" data-section="who">Who we work with</a>
+        <a href="#how" data-section="how">Approach</a>
+        <a href="#ai" data-section="ai">AI</a>
+        <a href="#stages" data-section="stages">Engagement</a>
+        <a href="#founder" data-section="founder">Founder</a>
+      </nav>
+      <a class="cta" href="#contact">Start a conversation</a>
+      <button class="menu-btn" id="js-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="js-mnav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="m-nav" id="js-mnav" aria-label="Sections">
+      <a href="#who">Who we work with</a>
+      <a href="#how">Approach</a>
+      <a href="#ai">AI &amp; foundations</a>
+      <a href="#stages">The engagement</a>
+      <a href="#founder">The founder</a>
+      <a href="#contact">Start a conversation &#8594;</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="top" class="hero">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <h1 class="hero-h" data-reveal style="transition-delay:.05s">
+            Operations built for the next stage of <em>growth.</em>
+          </h1>
+          <p class="lead" data-reveal style="transition-delay:.12s">
+            Most businesses hit a ceiling not because the product failed or the market moved, but because the operating model never kept up. The systems that got you here are slowing you down.
+          </p>
+          <p class="emph" data-reveal style="transition-delay:.16s">
+            Revenue grows, but margins compress. Hiring accelerates, but productivity per head declines.
+          </p>
+          <div class="ctas" data-reveal style="transition-delay:.2s">
+            <a class="btn btn-p" href="#contact">Start a conversation <span class="arr">&#8594;</span></a>
+            <a class="btn btn-g" href="#how">How we work</a>
+          </div>
+        </div>
+        <nav class="contents" data-reveal style="transition-delay:.24s" aria-label="On this page">
+          <div class="lbl">On this page</div>
+          <a href="#who"><span class="tt">Who we work with</span></a>
+          <a href="#how"><span class="tt">How this works</span></a>
+          <a href="#ai"><span class="tt">AI &amp; foundations</span></a>
+          <a href="#stages"><span class="tt">The engagement</span></a>
+          <a href="#founder"><span class="tt">The founder</span></a>
+          <div class="meta">Australia &middot; United States</div>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 Who we work with -->
+  <section id="who" class="article">
+    <div class="bignum">01</div>
+    <div class="wrap inner">
+      <div class="sec-kick"><span class="sq"></span>Who we work with</div>
+      <div class="why-grid">
+        <div>
+          <h2 data-reveal>Three kinds of organisations find their way to Aurien.</h2>
+          <p class="aside" data-reveal style="transition-delay:.06s">They come from different markets and different stages. What they share is the need to change their operating model to grow.</p>
+        </div>
+        <ul class="why-list">
+          <li data-reveal>
+            <span class="ix">01</span>
+            <span><strong>Australian technology companies preparing to enter the US market</strong> through channel and distribution models. The partner infrastructure needed to scale in a new market is easy to underestimate, and getting it wrong early is expensive. Aurien works through the implications before the commitment is made.</span>
+          </li>
+          <li data-reveal style="transition-delay:.06s">
+            <span class="ix">02</span>
+            <span><strong>Australian growth-stage businesses that have scaled faster than their operating model can support.</strong> Aurien helps founders and leadership teams work out where the model has broken down and rebuild it for the size the business has become.</span>
+          </li>
+          <li data-reveal style="transition-delay:.12s">
+            <span class="ix">03</span>
+            <span><strong>US-based technology companies whose channel and partner programmes are underperforming.</strong> Aurien works embedded alongside specialist channel consultancies to find why a programme isn't producing and fix it from the inside.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Approach -->
+  <section id="how" class="article approach">
+    <div class="bignum">02</div>
+    <div class="wrap inner">
+      <div class="sec-kick"><span class="sq"></span>How this works</div>
+      <h2 data-reveal>Most consultants arrive with frameworks. <em>We arrive with questions.</em></h2>
+      <div class="cols">
+        <div class="body">
+          <p data-reveal>Every engagement starts with Clarity: a structured diagnostic, not a discovery call in disguise. The problem that prompts the call is rarely the constraint underneath it. Businesses that outgrow their operating model all look different on the surface. Underneath, it's usually the same three or four patterns.</p>
+          <p data-reveal style="transition-delay:.06s">We've built and run these systems inside businesses we were accountable for. Nothing gets recommended until the specific operating context is understood.</p>
+        </div>
+        <div class="pull" data-reveal style="transition-delay:.1s">
+          <p>Operational pattern recognition, built over years inside growing businesses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 AI -->
+  <section id="ai" class="ai">
+    <div class="bignum">03</div>
+    <img class="sunmark" src="assets/logomark.png" alt="" aria-hidden="true">
+    <div class="wrap">
+      <div class="sec-kick"><span class="sq"></span>AI &amp; operational foundations</div>
+      <h2 data-reveal>AI is only as useful as the operations <em>underneath it.</em></h2>
+      <p class="emph" data-reveal>Aurien has spent the last two years building AI-assisted workflows into live business operations, and runs them every day.</p>
+      <div class="q" data-reveal style="transition-delay:.06s">
+        <p>AI adoption keeps running into the same problem: adding intelligence to a system that doesn't yet have reliable foundations.</p>
+        <ul>
+          <li>The process is manual and undocumented.</li>
+          <li>The data is inconsistent.</li>
+          <li>No one has a shared view of what good looks like.</li>
+        </ul>
+        <p class="punch">AI doesn't fix any of that. It amplifies it.</p>
+      </div>
+      <p class="close" data-reveal style="transition-delay:.1s">The advisory work comes from that experience, not from reading about it.</p>
+    </div>
+  </section>
+
+  <!-- 04 Stages / Engagement -->
+  <section id="stages" class="article stages">
+    <div class="bignum">04</div>
+    <div class="wrap inner">
+      <div class="sec-kick"><span class="sq"></span>The engagement</div>
+      <h2 data-reveal>How an engagement works.</h2>
+      <div class="cols-row">
+        <div class="col" data-reveal>
+          <h3>Clarity</h3>
+          <div class="when">Fixed scope and fixed fee</div>
+          <p>Four to six weeks, run as a structured diagnostic. The output is a written view of where the model is breaking and why, talked through with the leadership team: what to fix first, and what can wait.</p>
+        </div>
+        <div class="col" data-reveal style="transition-delay:.08s">
+          <h3>Build</h3>
+          <div class="when">Scoped after Clarity</div>
+          <p>The deeper work. Operating model design, process redesign, channel and market-entry foundations, strategy-to-execution alignment, done alongside the leadership team.</p>
+        </div>
+        <div class="col" data-reveal style="transition-delay:.16s">
+          <h3>Grow</h3>
+          <div class="when">Advisory and subscription-based</div>
+          <p>An ongoing fractional engagement for businesses that want an experienced operational and channel strategy hand available without a full-time hire. Scoped to the specific need.</p>
+        </div>
+      </div>
+      <p class="channel" data-reveal>Aurien's channel and partner work covers programme design, partner onboarding infrastructure, go-to-market alignment across markets, and the operational systems that keep a programme running consistently rather than in bursts.</p>
+    </div>
+  </section>
+
+  <!-- 05 Founder -->
+  <section id="founder" class="article founder">
+    <div class="bignum">05</div>
+    <div class="wrap inner">
+      <div class="grid">
+        <div class="photo" data-reveal>
+          <img src="assets/Vanessa_Website.png" alt="Vanessa Rizzo">
+        </div>
+        <div>
+          <div class="sec-kick"><span class="sq"></span>Founder &middot; Director</div>
+          <h2 class="name" data-reveal>Vanessa Rizzo</h2>
+          <p class="emph" data-reveal style="transition-delay:.04s">Fifteen years in operations and channel strategy across Australia and the US.</p>
+          <div class="copy" data-reveal style="transition-delay:.08s">
+            <p>Vanessa has built and run the operational and channel infrastructure that growth depends on. Not as a consultant. As the person accountable for the outcome.</p>
+            <p>That means channel programmes across three continents, including partner networks, two-tier distribution, and marketplace and retail placements. She knows what it takes to get a business ready for new market entry and channel-ready.</p>
+            <p>She builds working AI systems, not chatbot experiments: automated workflows and operational infrastructure that change how a business runs day to day. She started Aurien because she's been in the room where this work succeeds or fails.</p>
+          </div>
+          <div class="creds" data-reveal style="transition-delay:.14s">
+            <span>Head of Global Operations, US &amp; UK expansion</span>
+            <span>Global Executive MBA</span>
+            <span>Fortune 500 partnerships</span>
+            <span>Across Australia &amp; the United States</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="article contact">
+    <div class="wrap inner">
+      <div class="grid">
+        <div>
+          <div class="sec-kick"><span class="sq"></span>Start with a conversation</div>
+          <div class="big" data-reveal>30 minutes.</div>
+          <h2 data-reveal style="transition-delay:.05s">No pitch. No frameworks.</h2>
+          <div class="copy" data-reveal style="transition-delay:.1s">
+            <p>Thirty minutes to understand where growth is creating pressure and whether an operational perspective would be useful. If it's not a fit, we'll say so.</p>
+          </div>
+        </div>
+        <div data-reveal style="transition-delay:.1s">
+          <div class="form-success" id="js-form-success">
+            <strong>Message sent. We'll be in touch shortly.</strong>
+          </div>
+          <form id="js-contact-form" novalidate>
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input type="text" id="f-name" name="name" placeholder="Your name">
+            </div>
+            <div class="field">
+              <label for="f-email">Email *</label>
+              <input type="email" id="f-email" name="email" placeholder="you@company.com">
+              <div class="err" id="js-email-err">Please enter a valid email address.</div>
+            </div>
+            <div class="field">
+              <label for="f-company">Company</label>
+              <input type="text" id="f-company" name="company" placeholder="Where you're working from">
+            </div>
+            <div class="field">
+              <label for="f-message">Tell us about your business</label>
+              <textarea id="f-message" name="message" placeholder="What's harder than it should be right now?"></textarea>
+            </div>
+            <div class="form-error" id="js-form-err">Something went wrong. Please try again or get in touch directly.</div>
+            <button class="btn btn-p" type="submit" style="justify-self:start">Send message <span class="arr">&#8594;</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="row">
+        <div class="brand">
+          <img src="assets/logo-white-text.png" alt="Aurien Group">
+        </div>
+        <div class="links">
+          <a href="https://www.linkedin.com/company/auriengroup" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div class="legal">&copy; 2026 Aurien Group &middot; Operations built for the next stage of growth.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var progress = document.getElementById('js-progress');
+      var navLinks = document.querySelectorAll('.mast nav a[data-section]');
+      var sections = ['who','how','ai','stages','founder','contact'];
+      var revealEls = Array.from(document.querySelectorAll('[data-reveal]'));
+      var raf = 0;
+
+      function updateProgress() {
+        var doc = document.documentElement;
+        var max = doc.scrollHeight - doc.clientHeight;
+        var pct = max > 0 ? Math.min(1, doc.scrollTop / max) : 0;
+        progress.style.width = (pct * 100) + '%';
+      }
+
+      function updateScrollSpy() {
+        var mid = window.innerHeight * 0.32;
+        var cur = sections[0];
+        for (var i = 0; i < sections.length; i++) {
+          var el = document.getElementById(sections[i]);
+          if (el && el.getBoundingClientRect().top <= mid) cur = sections[i];
+        }
+        navLinks.forEach(function(a) {
+          a.classList.toggle('on', a.dataset.section === cur);
+        });
+      }
+
+      function isInView(el) {
+        var r = el.getBoundingClientRect();
+        return r.top < window.innerHeight * 0.96 && r.bottom > 0;
+      }
+
+      function revealAll() {
+        revealEls.forEach(function(el) {
+          if (!el.hasAttribute('data-in') && isInView(el)) {
+            el.setAttribute('data-in', '');
+          }
+        });
+      }
+
+      function onScroll() {
+        if (raf) return;
+        raf = requestAnimationFrame(function() {
+          raf = 0;
+          updateProgress();
+          updateScrollSpy();
+          revealAll();
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Mobile menu
+      var menuBtn = document.getElementById('js-menu-btn');
+      var mnav = document.getElementById('js-mnav');
+      menuBtn.addEventListener('click', function() {
+        var open = mnav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      mnav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          mnav.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      requestAnimationFrame(function() {
+        revealAll();
+        updateScrollSpy();
+        requestAnimationFrame(revealAll);
+      });
+      window.addEventListener('load', revealAll, { once: true });
+      setTimeout(function() {
+        revealEls.forEach(function(el) { el.setAttribute('data-in', ''); });
+      }, 700);
+
+      // Contact form
+      var form = document.getElementById('js-contact-form');
+      var emailInput = document.getElementById('f-email');
+      var emailErr = document.getElementById('js-email-err');
+      var formSuccess = document.getElementById('js-form-success');
+      var formErr = document.getElementById('js-form-err');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = emailInput.value.trim();
+        if (!email.includes('@') || !email.includes('.')) {
+          emailInput.style.borderColor = '#B23A2F';
+          emailErr.classList.add('show');
+          return;
+        }
+        emailInput.style.borderColor = '';
+        emailErr.classList.remove('show');
+
+        var btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        formErr.classList.remove('show');
+
+        var payload = {
+          name: form.querySelector('[name="name"]').value,
+          email: email,
+          company: form.querySelector('[name="company"]').value,
+          message: form.querySelector('[name="message"]').value
+        };
+
+        fetch('https://hook.us2.make.com/axvah1wqtcxnfyh8wvffibdfypudjgab', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function() {
+          form.style.display = 'none';
+          formSuccess.classList.add('show');
+        }).catch(function() {
+          btn.disabled = false;
+          btn.innerHTML = 'Send message <span class="arr">&#8594;</span>';
+          formErr.classList.add('show');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
